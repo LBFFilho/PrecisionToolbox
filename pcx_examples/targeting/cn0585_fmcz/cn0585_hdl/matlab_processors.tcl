@@ -3,12 +3,12 @@ proc preprocess_bd {project carrier rxtx} {
     puts "Preprocessing $project $carrier $rxtx"
 
     switch $project {
-        cn0585_fmcz {
+        cn0585 {
             # Disconnect the ADC PACK pins
             delete_bd_objs [get_bd_nets axi_ltc2387_0_adc_data]
-	    delete_bd_objs [get_bd_nets axi_ltc2387_1_adc_data]
-	    delete_bd_objs [get_bd_nets axi_ltc2387_2_adc_data]
-	    delete_bd_objs [get_bd_nets axi_ltc2387_3_adc_data]
+	        delete_bd_objs [get_bd_nets axi_ltc2387_1_adc_data]
+	        delete_bd_objs [get_bd_nets axi_ltc2387_2_adc_data]
+	        delete_bd_objs [get_bd_nets axi_ltc2387_3_adc_data]
 
             set sys_cstring "matlab $rxtx"
             sysid_gen_sys_init_file $sys_cstring
@@ -19,14 +19,14 @@ proc preprocess_bd {project carrier rxtx} {
             connect_bd_net [get_bd_pins axi_ltc2387_0/adc_valid] [get_bd_pins axi_ltc2387_dma/fifo_wr_en]
 
            if {$rxtx == "rx"} {
-	     connect_bd_net [get_bd_pins axi_ltc2387_0/adc_data] [get_bd_pins axi_ad3552r_0/data_in_a]
+	         connect_bd_net [get_bd_pins axi_ltc2387_0/adc_data] [get_bd_pins axi_ad3552r_0/data_in_a]
              connect_bd_net [get_bd_pins axi_ltc2387_1/adc_data] [get_bd_pins axi_ad3552r_0/data_in_b]
              connect_bd_net [get_bd_pins axi_ltc2387_2/adc_data] [get_bd_pins axi_ad3552r_1/data_in_a]
              connect_bd_net [get_bd_pins axi_ltc2387_3/adc_data] [get_bd_pins axi_ad3552r_1/data_in_b]
            }
 
            if {$rxtx == "tx"} {
-	     connect_bd_net [get_bd_pins axi_ltc2387_0/adc_data] [get_bd_pins util_ltc2387_adc_pack/fifo_wr_data_0]
+	         connect_bd_net [get_bd_pins axi_ltc2387_0/adc_data] [get_bd_pins util_ltc2387_adc_pack/fifo_wr_data_0]
              connect_bd_net [get_bd_pins axi_ltc2387_1/adc_data] [get_bd_pins util_ltc2387_adc_pack/fifo_wr_data_1]
              connect_bd_net [get_bd_pins axi_ltc2387_2/adc_data] [get_bd_pins util_ltc2387_adc_pack/fifo_wr_data_2]
              connect_bd_net [get_bd_pins axi_ltc2387_3/adc_data] [get_bd_pins util_ltc2387_adc_pack/fifo_wr_data_3]
