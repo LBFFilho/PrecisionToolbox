@@ -64,7 +64,7 @@ done
 
 # Remove git directory move to bsp folder
 rm -fr hdl/.git*
-TARGET="../../../../../hdl/vendor/AnalogDevices/vivado"
+TARGET="../../../../hdl/vendor/AnalogDevices/vivado"
 if [ -d "$TARGET" ]; then
     rm -rf "$TARGET"
 fi
@@ -72,17 +72,17 @@ fi
 mv hdl $TARGET
 
 # Post-process ports.json
-cp ./ports.json ../../../../../CI/
-python3 ../../../../../CI/scripts/read_ports_json.py
-cp ../../../../../CI/ports.json ../../../../../hdl/vendor/AnalogDevices/+AnalogDevices/
+cp ./ports.json ../../../../CI/
+python3 ../../../../CI/scripts/read_ports_json.py
+cp ../../../../CI/ports.json ../../../../hdl/vendor/AnalogDevices/+AnalogDevices/
 
 # Updates
-cp ./matlab_processors.tcl ../../../../../hdl/vendor/AnalogDevices/vivado/projects/scripts/matlab_processors.tcl
-cp ./system_project_rxtx.tcl ../../../../../hdl/vendor/AnalogDevices/vivado/projects/scripts/system_project_rxtx.tcl
-cp ../../adi_build.tcl ../../../../../hdl/vendor/AnalogDevices/vivado/projects/scripts/adi_build.tcl
+cp ./matlab_processors.tcl ../../../../hdl/vendor/AnalogDevices/vivado/projects/scripts/matlab_processors.tcl
+cp ./system_project_rxtx.tcl ../../../../hdl/vendor/AnalogDevices/vivado/projects/scripts/system_project_rxtx.tcl
+cp ./adi_build.tcl ../../../../hdl/vendor/AnalogDevices/vivado/projects/scripts/adi_build.tcl
 
 # Copy boot files
-mkdir ../../../../../hdl/vendor/AnalogDevices/vivado/projects/common/boot/
-cp -r ../../../../../CI/scripts/boot/* ../../../../../hdl/vendor/AnalogDevices/vivado/projects/common/boot/
+mkdir ../../../../hdl/vendor/AnalogDevices/vivado/projects/common/boot/
+cp -r ../../../../CI/scripts/boot/* ../../../../hdl/vendor/AnalogDevices/vivado/projects/common/boot/
 
-echo 'puts "Skipping"' > ../../../../../hdl/vendor/AnalogDevices/vivado/library/axi_ad9361/axi_ad9361_delay.tcl
+echo 'puts "Skipping"' > ../../../../hdl/vendor/AnalogDevices/vivado/library/axi_ad9361/axi_ad9361_delay.tcl
