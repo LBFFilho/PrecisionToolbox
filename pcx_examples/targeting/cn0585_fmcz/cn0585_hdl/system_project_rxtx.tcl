@@ -1,11 +1,11 @@
 set start_dir [pwd]
-puts "Starting High-Speed Converter Toolbox HDL build"
+puts "Starting Precision Toolbox HDL build"
 
 if {$preprocess == "on"} {
     source $preprocess_script
 }
 
-cd ../../../../../hdl/vendor/AnalogDevices/vivado
+cd ../../../../hdl/vendor/AnalogDevices/vivado
 cd projects/$project/$carrier
 source ../../scripts/adi_make.tcl
 adi_make::lib all
