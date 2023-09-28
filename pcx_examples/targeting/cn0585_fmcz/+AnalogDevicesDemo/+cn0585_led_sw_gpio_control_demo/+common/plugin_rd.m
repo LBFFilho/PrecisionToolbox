@@ -51,7 +51,7 @@ hRD.addParameter( ...
 
 %% Add custom design files
 hRD.addCustomVivadoDesign( ...
-    'CustomBlockDesignTcl', fullfile('hdl','vendor','AnalogDevices','vivado','projects','scripts', 'system_project_rxtx.tcl'));
+    'CustomBlockDesignTcl', fullfile('pcx_examples', 'targeting', 'cn0585_fmcz', 'cn0585_hdl', 'system_project_rxtx.tcl'));
 
 %% Standard reference design pieces
 hRD.BlockDesignName = 'system';

@@ -78,7 +78,7 @@ cp ../../../../CI/ports.json ../../../../hdl/vendor/AnalogDevices/+AnalogDevices
 
 # Updates
 cp ./matlab_processors.tcl ../../../../hdl/vendor/AnalogDevices/vivado/projects/scripts/matlab_processors.tcl
-cp ../../../../CI/scripts/system_project_rxtx.tcl ../../../../hdl/vendor/AnalogDevices/vivado/projects/scripts/system_project_rxtx.tcl
+cp ./system_project_rxtx.tcl ../../../../hdl/vendor/AnalogDevices/vivado/projects/scripts/system_project_rxtx.tcl
 cp ./adi_build.tcl ../../../../hdl/vendor/AnalogDevices/vivado/projects/scripts/adi_build.tcl
 
 # Copy boot files

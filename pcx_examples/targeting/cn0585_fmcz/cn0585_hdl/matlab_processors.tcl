@@ -3,7 +3,7 @@ proc preprocess_bd {project carrier rxtx} {
     puts "Preprocessing $project $carrier $rxtx"
 
     switch $project {
-        cn0585 {
+        cn0585_fmcz {
             # Disconnect the ADC PACK pins
             delete_bd_objs [get_bd_nets axi_ltc2387_0_adc_data]
 	        delete_bd_objs [get_bd_nets axi_ltc2387_1_adc_data]
@@ -75,6 +75,7 @@ proc preprocess_bd {project carrier rxtx} {
             connect_bd_net [get_bd_ports gpio_i] [get_bd_pins xlslice_1/Din]
             connect_bd_net [get_bd_ports gpio_i] [get_bd_pins xlslice_2/Din]
             create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0
+	    set_property CONFIG.NUM_PORTS {3} [get_bd_cells xlconcat_0]
             set_property -dict [list CONFIG.IN2_WIDTH.VALUE_SRC USER CONFIG.IN1_WIDTH.VALUE_SRC USER CONFIG.IN0_WIDTH.VALUE_SRC USER] [get_bd_cells xlconcat_0]
             set_property -dict [list \
               CONFIG.IN0_WIDTH {45} \
@@ -112,6 +113,7 @@ proc preprocess_bd {project carrier rxtx} {
             connect_bd_net [get_bd_pins sys_ps7/GPIO_O] [get_bd_pins xlslice_4/Din]
             connect_bd_net [get_bd_pins sys_ps7/GPIO_O] [get_bd_pins xlslice_5/Din]
             create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_1
+	    set_property CONFIG.NUM_PORTS {3} [get_bd_cells xlconcat_1]
             set_property -dict [list CONFIG.IN2_WIDTH.VALUE_SRC USER CONFIG.IN1_WIDTH.VALUE_SRC USER CONFIG.IN0_WIDTH.VALUE_SRC USER] [get_bd_cells xlconcat_1]
             set_property -dict [list \
               CONFIG.IN0_WIDTH {37} \

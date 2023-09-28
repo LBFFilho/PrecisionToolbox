@@ -5,7 +5,6 @@ if {$preprocess == "on"} {
     source $preprocess_script
 }
 
-cd ../../../../hdl/vendor/AnalogDevices/vivado
 cd projects/$project/$carrier
 source ../../scripts/adi_make.tcl
 adi_make::lib all
@@ -19,9 +18,8 @@ set ::env(ADI_IGNORE_VERSION_CHECK) 1
 
 source ./system_project.tcl
 
-cd $start_dir
 # Update block design to make room for new IP
-source ./matlab_processors.tcl
+source ../../scripts/matlab_processors.tcl
 preprocess_bd $project $carrier $ref_design
 
 if {$postprocess == "on"} {
