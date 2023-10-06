@@ -158,7 +158,7 @@
                     {
                         "input": "true",
                         "width": 8,
-                        "name": "xlsice_1/Dout",
+                        "name": "xlslice_1/Dout",
                         "type": "data",
                         "m_name": "IP Data 4 IN"
                     },
